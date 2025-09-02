@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  libermetrix_api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: libermetrix_api
+    command: sh -c "npm run start:dev"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      - PORT=${PORT}
+      - BRAND_ID=${BRAND_ID}
+      - API_KEY=${API_KEY}
+      - API_URL=${API_URL}
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:${PORT}/health/liveness || exit 1"]
+      interval: 2s
+      timeout: 5s
+      retries: 100

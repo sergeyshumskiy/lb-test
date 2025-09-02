@@ -1,20 +1,17 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { ConfigModule } from '@nestjs/config';
-import { PaymentsModule } from './payments/payments.module';
-
-import config from './config';
+import { PaymentsModule } from './modules/payments/payments.module';
+import { HealthModule } from './modules/healthz/healthz.module';
+import { PaymentApiModule } from './libs/payment-api/payment.api.module';
+import { LoggerModule } from './logger/logger.module';
+import { ConfigModule } from './config/config.module';
 
 @Module({
   imports: [
+    PaymentApiModule,
     PaymentsModule,
-    ConfigModule.forRoot({
-      isGlobal: true,
-      load: [config],
-    }),
+    HealthModule,
+    LoggerModule,
+    ConfigModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

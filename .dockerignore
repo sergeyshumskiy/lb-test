@@ -1,0 +1,13 @@
+node_modules
+dist
+logs
+*[Dd]ocker*
+.editorconfig
+.git*
+*.md
+k8s*
+.gitlab-ci.yml
+
+.vscode/*
+.idea/*
+npm-debug*
