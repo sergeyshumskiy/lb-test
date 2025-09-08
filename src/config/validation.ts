@@ -29,6 +29,10 @@ class EnvironmentVariables {
   @IsString()
   @IsNotEmpty()
   API_URL: string;
+
+  @IsString()
+  @IsNotEmpty()
+  FRONTEND_URL: string;
 }
 
 export function validate(config: Record<string, unknown>) {

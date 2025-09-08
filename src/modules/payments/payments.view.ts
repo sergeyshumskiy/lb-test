@@ -10,6 +10,9 @@ import {
   CompletePaymentResponse,
   ThreeDSecureResponse,
   RawPaymentData,
+  Complete3DSPayload,
+  Complete3DSRequestPayload,
+  Complete3DSRequestQuery,
 } from './paymemts.interface';
 
 @Injectable()
@@ -51,6 +54,7 @@ export class PaymentsView {
         email: data.client.email,
       },
       purchase: {
+        currency: data.purchase.currency,
         products: data.purchase.products,
       },
       checkoutUrl: data.checkout_url,
@@ -65,7 +69,20 @@ export class PaymentsView {
       status: data.status,
       PaReq: data.PaReq,
       MD: data.MD,
-      callback_url: data.callback_url,
+      Method: data.Method,
+      callbackUrl: data.callback_url,
+      URL: data.URL,
+    };
+  }
+
+  public createComplete3DSPayload(
+    data: Complete3DSRequestPayload,
+    query: Complete3DSRequestQuery,
+  ): Complete3DSPayload {
+    return {
+      MD: data.MD,
+      PaRes: data.PaRes,
+      callbackUrl: query.callbackUrl,
     };
   }
 }

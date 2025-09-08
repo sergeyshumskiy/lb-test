@@ -4,4 +4,5 @@ export interface Config {
   apiKey: string | undefined;
   s2sToken: string | undefined;
   apiUrl: string | undefined;
+  frontendUrl: string | undefined;
 }

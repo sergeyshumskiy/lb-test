@@ -45,6 +45,7 @@ export class PaymentApiService {
     directPostUrl: string,
   ): Promise<CompletePaymentApiResponse | undefined> {
     const s2sToken = this.configService.get<string>('s2sToken');
+
     try {
       const response = await firstValueFrom(
         this.http.post(`${directPostUrl}`, payload, {

@@ -4,6 +4,7 @@ import {
   CreatePaymentDto,
   CompletePaymentDto,
   Complete3DSDto,
+  Complete3DSDtoQuery,
 } from './payments.dto';
 import { PaymentsView } from './payments.view';
 import {
@@ -50,7 +51,11 @@ export class PaymentsService {
     return this.paymentsView.completePaymentResponse(response);
   }
 
-  public async complete3DS(data: Complete3DSDto): Promise<any> {
-    return this.paymentApiService.complete3DS(data);
+  public async complete3DS(
+    data: Complete3DSDto,
+    query: Complete3DSDtoQuery,
+  ): Promise<any> {
+    const payload = this.paymentsView.createComplete3DSPayload(data, query);
+    return this.paymentApiService.complete3DS(payload);
   }
 }

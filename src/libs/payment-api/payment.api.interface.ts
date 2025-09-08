@@ -11,6 +11,7 @@ export interface ClientInfo {
 }
 
 export interface PurchaseInfo {
+  currency: string;
   products: ProductInfo[];
 }
 

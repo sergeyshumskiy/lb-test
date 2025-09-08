@@ -23,7 +23,9 @@ export interface CompletePaymentResponse {
   status: string;
   PaReq?: string;
   MD?: string;
-  callback_url?: string;
+  callbackUrl?: string;
+  Method?: string;
+  URL?: string;
 }
 
 export interface ThreeDSecureResponse {
@@ -42,4 +44,19 @@ export interface RawPaymentData {
   purchase: Purchase;
   checkout_url: string;
   direct_post_url: string;
+}
+
+export interface Complete3DSPayload {
+  callbackUrl: string;
+  MD: string;
+  PaRes: string;
+}
+
+export interface Complete3DSRequestPayload {
+  MD: string;
+  PaRes: string;
+}
+
+export interface Complete3DSRequestQuery {
+  callbackUrl: string;
 }

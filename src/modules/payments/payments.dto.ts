@@ -8,11 +8,12 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
-export class Complete3DSDto {
+export class Complete3DSDtoQuery {
   @IsString()
   @IsNotEmpty()
   callbackUrl: string;
-
+}
+export class Complete3DSDto {
   @IsString()
   MD: string;
 
@@ -54,6 +55,10 @@ export class ProductDto {
 }
 
 export class PurchaseDto {
+  @IsString()
+  @IsNotEmpty()
+  currency: string;
+
   @ValidateNested({ each: true })
   @Type(() => ProductDto)
   products: ProductDto[];
